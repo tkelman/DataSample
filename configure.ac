@@ -12,7 +12,7 @@
 
 AC_PREREQ(2.59)
 
-AC_INIT([DataSample],[trunk],[https://projects.coin-or.org/BuildTools/])
+AC_INIT([DataSample],[1.2stable],[https://projects.coin-or.org/BuildTools/])
 
 AC_COPYRIGHT([
 Copyright 2006 International Business Machines and others.
