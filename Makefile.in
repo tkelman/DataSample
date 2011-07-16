@@ -569,6 +569,9 @@ uninstall-doc:
 @HAVE_EXTERNALS_TRUE@@MAINTAINER_MODE_TRUE@	cd $(srcdir); svn update
 
 .PHONY: install-doc uninstall-doc update-externals
+
+test:
+	@echo "No test available."
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
