@@ -44,6 +44,7 @@ AC_COIN_INIT_AUTOMAKE
 #############################################################################
 
 AC_COIN_EXAMPLE_FILES([*.mps])
+AC_COIN_EXAMPLE_FILES([*.block])
 AC_COIN_EXAMPLE_FILES([input.130])
 AC_COIN_EXAMPLE_FILES([app0110.* app0110R.* bug.*])
 
