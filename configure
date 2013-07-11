@@ -1299,6 +1299,7 @@ coin_projectdir=yes
 # Set the project's version numbers
 
 
+
 cat >>confdefs.h <<_ACEOF
 #define DATASAMPLE_VERSION "$PACKAGE_VERSION"
 _ACEOF
@@ -1384,7 +1385,8 @@ _ACEOF
 
 
 
-# Capture libtool library version, if given.
+ # Capture libtool library version, if given.
+
 
 
 
@@ -2373,6 +2375,58 @@ echo "$as_me: Creating links to the example files (*.mps)" >&6;}
     $lnkcmd $srcdir/$file $file
   done
   EXAMPLE_CLEAN_FILES="$EXAMPLE_CLEAN_FILES *.mps"
+else
+  EXAMPLE_CLEAN_FILES="$EXAMPLE_CLEAN_FILES"
+fi
+
+# In case there are compressed files, we create a variable with the
+# uncompressed names
+EXAMPLE_UNCOMPRESSED_FILES=
+for file in $EXAMPLE_FILES; do
+  case $file in
+    *.gz)
+      EXAMPLE_UNCOMPRESSED_FILES="$EXAMPLE_UNCOMPRESSED_FILES `echo $file | sed -e s/.gz//`"
+      ;;
+  esac
+done
+
+
+
+
+
+
+
+
+
+files=`cd $srcdir; ls *.lp`
+# We need to do the following loop to make sure that are no newlines
+# in the variable
+for file in $files; do
+  EXAMPLE_FILES="$EXAMPLE_FILES $file"
+done
+if test $coin_vpath_config = yes; then
+  lnkcmd=
+  if test "$enable_doscompile" != no; then
+    lnkcmd=cp
+  fi
+  case "$CC" in
+    clang* ) ;;
+    cl* | */cl* | CL* | */CL* | icl* | */icl* | ICL* | */ICL*)
+      lnkcmd=cp ;;
+  esac
+  if test "x$lnkcmd" = xcp; then
+    { echo "$as_me:$LINENO: Copying example files (*.lp)" >&5
+echo "$as_me: Copying example files (*.lp)" >&6;}
+  else
+    { echo "$as_me:$LINENO: Creating links to the example files (*.lp)" >&5
+echo "$as_me: Creating links to the example files (*.lp)" >&6;}
+    lnkcmd="$LN_S"
+  fi
+  for file in $EXAMPLE_FILES; do
+    rm -f $file
+    $lnkcmd $srcdir/$file $file
+  done
+  EXAMPLE_CLEAN_FILES="$EXAMPLE_CLEAN_FILES *.lp"
 else
   EXAMPLE_CLEAN_FILES="$EXAMPLE_CLEAN_FILES"
 fi
