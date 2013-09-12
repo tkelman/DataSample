@@ -1299,7 +1299,6 @@ coin_projectdir=yes
 # Set the project's version numbers
 
 
-
 cat >>confdefs.h <<_ACEOF
 #define DATASAMPLE_VERSION "$PACKAGE_VERSION"
 _ACEOF
@@ -1385,8 +1384,7 @@ _ACEOF
 
 
 
- # Capture libtool library version, if given.
-
+# Capture libtool library version, if given.
 
 
 
