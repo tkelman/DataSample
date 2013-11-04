@@ -4,6 +4,7 @@
 *Purpose      This file tests the processing of the
 *             CoinMpsIO subsystem --- it does not make
 *             much sense as an optimization problem
+*             but is useful to illustrate a fully loaded MPS file
 NAME
 ROWS
  N  obj     
@@ -55,5 +56,8 @@ CSECTION      cone2       0.0          RQUAD
     x12
     x13
     x14
+*BASIS
+* XU x6        c1
+* BS x7
 ENDATA
 
