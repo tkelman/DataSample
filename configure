@@ -2604,58 +2604,6 @@ done
 
 
 
-
-
-
-files=`cd $srcdir; ls *.block`
-# We need to do the following loop to make sure that are no newlines
-# in the variable
-for file in $files; do
-  EXAMPLE_FILES="$EXAMPLE_FILES $file"
-done
-if test $coin_vpath_config = yes; then
-  lnkcmd=
-  if test "$enable_msvc" = yes; then
-    lnkcmd=cp
-  fi
-  case "$CC" in
-    clang* ) ;;
-    cl* | */cl* | CL* | */CL* | icl* | */icl* | ICL* | */ICL*)
-      lnkcmd=cp ;;
-  esac
-  if test "x$lnkcmd" = xcp; then
-    { echo "$as_me:$LINENO: Copying example files (*.block)" >&5
-echo "$as_me: Copying example files (*.block)" >&6;}
-  else
-    { echo "$as_me:$LINENO: Creating links to the example files (*.block)" >&5
-echo "$as_me: Creating links to the example files (*.block)" >&6;}
-    lnkcmd="$LN_S"
-  fi
-  for file in $EXAMPLE_FILES; do
-    rm -f $file
-    $lnkcmd $srcdir/$file $file
-  done
-  EXAMPLE_CLEAN_FILES="$EXAMPLE_CLEAN_FILES *.block"
-else
-  EXAMPLE_CLEAN_FILES="$EXAMPLE_CLEAN_FILES"
-fi
-
-# In case there are compressed files, we create a variable with the
-# uncompressed names
-EXAMPLE_UNCOMPRESSED_FILES=
-for file in $EXAMPLE_FILES; do
-  case $file in
-    *.gz)
-      EXAMPLE_UNCOMPRESSED_FILES="$EXAMPLE_UNCOMPRESSED_FILES `echo $file | sed -e s/.gz//`"
-      ;;
-  esac
-done
-
-
-
-
-
-
 ##############################################################################
 #                   Finishing up by writing all the output                   #
 ##############################################################################

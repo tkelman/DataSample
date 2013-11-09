@@ -48,7 +48,6 @@ AC_COIN_EXAMPLE_FILES([*.lp])
 AC_COIN_EXAMPLE_FILES([*.block])
 AC_COIN_EXAMPLE_FILES([input.130])
 AC_COIN_EXAMPLE_FILES([app0110.* app0110R.* bug.*])
-AC_COIN_EXAMPLE_FILES([*.block])
 
 ##############################################################################
 #                   Finishing up by writing all the output                   #
